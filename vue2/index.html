@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰2 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{ person.name }} {{ person.age }} -->
+        <!-- 함수가 호출 될 때 넣는 값을 인자 라고 한다. -->
+        {{ nextYear('안녕') }}
+        <!-- vue 선언된 데이터를 넣고 싶을 때 -->
+        
+        <!-- v-bind 키워드 생략 가능 -->
+        <!-- <input v-bind:type="type" v-bind:value="inputData"> -->
+        <input :type="type" :value="inputData">
+        <a :href="getKossiCoderLink('test')">구글 링크</a>
+        <br>
+        {{ year }}<br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '코지 코더',
+                    age: 34
+                },
+                inputData: 'hello',
+                type:'text',
+                link: "https://www.google.co.kr/",
+                year: 2018 // 데이터 변경이 일어나면 반영이 된다.
+            },
+            methods: {
+                getKossiCoderLink(channel) {
+                  return this.link + channel;
+                },
+                // 원하는 함수를 넣을 수 있음, 함수 선언시, 함수명(파라미터1, 파라미터2,...) 줄여쓰기 가능
+                nextYear(gretting) { // 함수에서 전달되는 값을 매개변수(파라미터)라고 한다.
+                    return gretting + '! ' + this.person.name + '는 내년에 ' + (this.person.age) + '살 입니다'; 
+                },
+                otherMethod: function() {
+                    this.nextYear();
+                },
+                alert() {
+                    alert("hi hyelin!");
+                },
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
