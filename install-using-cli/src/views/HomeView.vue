@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div>
+    <h1>This is Home Page</h1>
+    <kossie-coder/>
+  </div>  
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import KossieCoder from '@/components/KossieCoder.vue';
 
 export default {
-  name: 'HomeView',
   components: {
-    HelloWorld
+    KossieCoder
+  },
+  data() {
+    return {
+      name: 'Kossie Coder'
+    }
   }
 }
 </script>
+
+<!-- scoped의 의미: 
+여기 파일 컴포넌트 안에서 지역적으로 적용하겠다는 의미-->
+
+<style scoped>
+h1 {
+  color: red;
+}
+</style>
