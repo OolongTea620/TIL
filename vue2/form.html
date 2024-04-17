@@ -17,44 +17,36 @@
 </head>
 <body>
     <div id="app">
-        <!-- <h3>else-if</h3>
-        <div v-if="number === 1">Yes</div>
-        <div v-else-if="number === 2">Hi</div>
-        <div v-else="">No</div> -->
-        <!-- <button @click="increaseNumber">Increase</button> {{ number }} -->
-        
-        <!-- html 태그가 display=none으로 있다 -->
-        <div v-show="show">Yes</div>
-        <button @click="toggleShow">Toggle</button>
+        <!-- vue v-for -->
+        <div v-for="person in people">
+            {{person.name}} {{person.age}}
+        </div>
 
-    <!-- 
-            <h3>if, else</h3>
-         v-if 속성이 들어간 태그 랜더링 유부 확인하기
-         show === true 면 보여짐
-         show === false일 때 안보여짐
-        <template v-if="show">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-        </template>
-        <button @click="toggleShow">Toggle</button> 
-    -->
+        <hr>
+        <!-- of 도 가능 -->
+        <div v-for="person in people">
+            {{person.name}} {{person.age}}
+        </div>
+
+        <hr>
+        <!-- index를 가져오는 방법 -->
+        <!--:key에는 유니크 속성 부여 -->
+        <div v-for="(person, index) in people" :key="person.name"> 
+            {{person.name}} {{person.age}} {{index}}
+        </div>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                show: false,
-                number: 1
+                people: [
+                    {name : 'a', age : 20},
+                    {name : 'b', age : 21},
+                    {name : 'c', age : 22},
+                    {name : 'd', age : 23}
+                ]
             },
             methods: {
-                toggleShow() {
-                    this.show = !this.show;
-                },
-                increaseNumber() {
-                    this.number++;
-                }
             }
         })
     </script>
