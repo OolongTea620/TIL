@@ -4,36 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>폼 이벤트</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-        {{ message }}<br>
-        <button @click="changeMessage">Click</button>
-        {{ updated }}
+        <div :class="{ red: isRed, 'font-bold': isBold }">Hello</div> // '-' 가 있는 경우, 클래스명을 ''안으로 묶는다.
+        <button @click="update">Click</button>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '헬로우',
-                updated: '아니오'
+                isRed: false,
+                isBold: false,
             },
             methods: {
-                changeMessage() {
-                    this.message = "코지코더";
-                }
-            },
-            computed: { 
-                reversedMessage() {
-                    return this.message.split('').reverse().join('')
-                }
-            },
-            watch: {
-                //감시하고 싶은 변수명으로 함수명을 만든다.
-                message(newValue, oldValue) {
-                    console.log(newValue,  oldValue);
-                    this.updated = '네';
+                update() {
+                    this.isRed = !this.isRed;
+                    this.isBold = !this.isBold;
                 }
             }
         })

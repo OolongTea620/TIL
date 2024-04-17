@@ -12,3 +12,30 @@
 ### Watch 속성 
 
 1. watch 안에 함수명은 변경주시할 vue 변수명을으로 맞춘다.
+  
+
+### Class 바인딩
+
+```html
+<div id="app">
+        <div :class="{ red: isRed, 'font-bold': isBold }">Hello</div> // '-' 가 있는 경우, 클래스명을 ''안으로 묶는다.
+        <button @click="update">Click</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isRed: false,
+                isBold: false,
+            },
+            methods: {
+                update() {
+                    this.isRed = !this.isRed;
+                    this.isBold = !this.isBold;
+                }
+            }
+        })
+    </script>
+```
+
+### Style 바인딩
