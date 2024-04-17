@@ -8,3 +8,7 @@
 ### Coputed 속성 vs Methods 속성 차이점
 
 - `computed`는 결과를 캐싱하고 `Methods`는 캐싱을 하지 않는다.
+
+### Watch 속성 
+
+1. watch 안에 함수명은 변경주시할 vue 변수명을으로 맞춘다.

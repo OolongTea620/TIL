@@ -8,16 +8,16 @@
 </head>
 <body>
     <div id="app">
+        {{ message }}<br>
         <button @click="changeMessage">Click</button>
-        {{ reversedMessage }} 
-        {{ reversedMessage }} 
-        {{ reversedMessage }} 
+        {{ updated }}
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                message: '헬로우'
+                message: '헬로우',
+                updated: '아니오'
             },
             methods: {
                 changeMessage() {
@@ -27,6 +27,13 @@
             computed: { 
                 reversedMessage() {
                     return this.message.split('').reverse().join('')
+                }
+            },
+            watch: {
+                //감시하고 싶은 변수명으로 함수명을 만든다.
+                message(newValue, oldValue) {
+                    console.log(newValue,  oldValue);
+                    this.updated = '네';
                 }
             }
         })
