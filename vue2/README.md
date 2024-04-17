@@ -39,3 +39,25 @@
 ```
 
 ### Style 바인딩
+
+```html
+<div id="app">
+        <div :style="{ color: red, fontSize: size }">Hello</div> // '-' 가 있는 경우, 클래스명을 ''안으로 묶는다.
+        <button @click="update">Click</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                red : 'red',
+                size :'30px'
+            },
+            methods: {
+                update() {
+                    this.isRed = !this.isRed;
+                    this.isBold = !this.isBold;
+                }
+            }
+        })
+    </script>
+```
