@@ -8,39 +8,101 @@
 </head>
 <body>
     <div id="app">
-        {{name}}<br>
+        <!-- {{name}}<br>
         <button @click="changeText">Click</button>
+        <hr> -->
+        <kossie-button></kossie-button>
     </div>
-
+    <hr><hr>
     <div id="app-1">
-        {{name}}<br>
+        <!-- {{name}}<br>
         <button @click="changeText">Click</button>
+        <hr> -->
+        
+        <!-- component 이름으로 태그를 이용해서 등록할 수 있다. -->
+        <!--  app-1에서는 components 가 없어서 사용 불가능 -->
+        <kossie-button></kossie-button> 
+        
     </div>
-
     <script>
+        // 전역으로 컴포넌트로 등록
+        Vue.component('hello-world', {
+            template:'<div>hello-world</div>'
+        })
+        // Vue.component('kossie-button', {
+        //     template: `
+        //     <div>
+        //         {{name}}<br>
+        //         <hello-world></hello-world>  <!--  template 내부에도 component 태그를 사용가능 하다 -->
+        //         <button @click="changeText">Click</button>
+        //     </div>
+        //     `,
+        //     data() {
+        //         return {
+        //             name: 'kossie'
+        //         }
+        //     },
+        //     methods: {
+        //         changeText() {
+        //             this.name = "kossie updated";
+        //         }
+        //     }
+        // });
+
+        const HelloWorld = {
+            template: '<div>hello-world</div>'  
+        };
+
+        // 컴포넌트의 지역등록
+        const KossieButton = {
+            components: {
+                'hello-word' : HelloWorld
+            },
+            template: `
+            <div>
+                {{name}}<br>
+                <hello-world></hello-world>  <!--  template 내부에도 component 태그를 사용가능 하다 -->
+                <button @click="changeText">Click</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'kossie'
+                }
+            },
+            methods: {
+                changeText() {
+                    this.name = "kossie updated";
+                }
+            }
+        };
+
         const app = new Vue({
             el: '#app',
-            data: {
-                name: 'kossie' 
-            },
-            methods: {
-                changeText() {
-                    app1.name = "kossie updated";
-                }
-            }
+            components: {
+                'kossie-button' : KossieButton
+            } 
+            // data: {
+            //     name: 'kossie' 
+            // },
+            // methods: {
+            //     changeText() {
+            //         this.name = "kossie updated";
+            //     }
+            // }
         })
 
-        const app1 = new Vue({
-            el: '#app-1',
-            data: {
-                name: 'kossie1' 
-            },
-            methods: {
-                changeText() {
-                    app.name = 'kossie1 upated';
-                }
-            }
-        })
+        // const app1 = new Vue({
+        //     el: '#app-1',
+        //     data: {
+        //         name: 'kossie1' 
+        //     },
+        //     methods: {
+        //         changeText() {
+        //             this.name = 'kossie1 upated';
+        //         }
+        //     }
+        // })
     </script>
 </body>
 </html>
