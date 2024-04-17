@@ -17,20 +17,43 @@
 </head>
 <body>
     <div id="app">
-        <div :style="{ color: red, fontSize: size }">Hello</div> // '-' 가 있는 경우, 클래스명을 ''안으로 묶는다.
-        <button @click="update">Click</button>
+        <!-- <h3>else-if</h3>
+        <div v-if="number === 1">Yes</div>
+        <div v-else-if="number === 2">Hi</div>
+        <div v-else="">No</div> -->
+        <!-- <button @click="increaseNumber">Increase</button> {{ number }} -->
+        
+        <!-- html 태그가 display=none으로 있다 -->
+        <div v-show="show">Yes</div>
+        <button @click="toggleShow">Toggle</button>
+
+    <!-- 
+            <h3>if, else</h3>
+         v-if 속성이 들어간 태그 랜더링 유부 확인하기
+         show === true 면 보여짐
+         show === false일 때 안보여짐
+        <template v-if="show">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </template>
+        <button @click="toggleShow">Toggle</button> 
+    -->
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                red : 'red',
-                size :'30px'
+                show: false,
+                number: 1
             },
             methods: {
-                update() {
-                    this.isRed = !this.isRed;
-                    this.isBold = !this.isBold;
+                toggleShow() {
+                    this.show = !this.show;
+                },
+                increaseNumber() {
+                    this.number++;
                 }
             }
         })

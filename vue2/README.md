@@ -61,3 +61,11 @@
         })
     </script>
 ```
+
+### v-if, v-else, v-else-if, v-show
+
+
+```
+v-if는 토글 비용 발생, v-show는 초기 렌더링 발생 
+=> 공식문서는 v-if를 권장하고 있음 
+```
