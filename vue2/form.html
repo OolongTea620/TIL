@@ -9,7 +9,9 @@
 <body>
     <div id="app">
         <form v-on:submit.prevent="submit">
-            <input type="text"><br>
+            <!-- <input type="text" :value="text" @keyup="updateText"><br> -->
+            <input type="text" v-model="text"><br> // v-model -> 양방향 바인딩
+            {{ text }}<br>
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -17,7 +19,8 @@
         new Vue({
             el: '#app',
             data: {
-                year: 2018 // 데이터 변경이 일어나면 반영이 된다.
+                year: 2018, // 데이터 변경이 일어나면 반영이 된다.
+                text: "text"
             },
             methods: {
                 plus() {
@@ -29,7 +32,10 @@
                 submit() {
                     alert("submitted");
                     console.log('submit event');
-                }
+                },
+                // updateText(event) {
+                //     this.text = event.target.value;
+                // }
             }
         })
     </script>
