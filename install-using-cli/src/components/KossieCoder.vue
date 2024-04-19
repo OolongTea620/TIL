@@ -1,8 +1,13 @@
 <template>
     <div>
-        <h1>{{ title }}</h1>
-        <p> {{ name }} </p>
-        <button @click="updateName">Change Name</button>
+        <p>header</p>
+        <slot name="header" :kossie="kossie"></slot>
+        <p>Body</p>
+        <!-- default로  해당 된 부분으로 교체됨 -->
+        <slot></slot>
+        <p>
+            footer
+        </p>
     </div>
 </template>
 
@@ -17,7 +22,8 @@ export default {
     }, // props...
     data() {
         return {
-            name : 'Kossie Coder',
+            kossie: 'coder'
+            // name : 'Kossie Coder',
         }
     },
     methods: {
