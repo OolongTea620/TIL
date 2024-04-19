@@ -2,7 +2,8 @@
   <div>
     <h1>This is Home Page</h1>
     <form action="">
-      <InputField :name="name"/>
+      <!-- <InputField :name="name" @update-name="name = $event.target.value"/> -->
+      <InputField v-model="name" />
       <br><button>Submit</button>
     </form>
     {{ name }}
