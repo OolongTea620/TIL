@@ -13,7 +13,11 @@
       v-for="todo in todos" 
       :key="todo.id"
       :todo="todo"
+      @toggle-checkbox="toggleCheckbox"
+      @click-delete="deleteTodo"
     />
+
+    {{ todos }}
   </div>
 </template>
 
@@ -26,22 +30,34 @@ export default {
   data() {
     return {
       todos: [
-        { id: 1, text: 'buy a car', chacked: false },
-        { id: 2, text: 'eat lunch', chacked: true },
-        { id: 3, text: 'go to sleep', chacked: false },
+        { id: 1, text: 'buy a car', checked: false },
+        { id: 2, text: 'eat lunch', checked: true },
+        { id: 3, text: 'go to sleep', checked: false },
       ]
     }
   },
   methods: {
+    deleteTodo(id) {
+      // const index = this.todos.findIndex(todo => {
+      //   return todo.id === id;
+      // })
+      // this.todos.splice(index,1);
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    },
     addTodo(e) {
       this.todos.push(
         {
           id: Math.random(), 
           text: e.target.value,
-          chacked: false
+          checked: false
         }
       )
-      console.log(this.todos)
+    },
+    toggleCheckbox({id, checked}) {
+      const index = this.todos.findIndex(todo => {
+        return todo.id === id;
+      })
+      this.todos[index].checked = checked;
     }
   }
 };
