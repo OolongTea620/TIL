@@ -17,7 +17,7 @@
       @click-delete="deleteTodo"
     />
 
-    {{ todos }}
+    <!-- {{ todos }} -->
   </div>
 </template>
 
