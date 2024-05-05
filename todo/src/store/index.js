@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -9,9 +10,13 @@ export default new Vuex.Store({
             { id: 1, text: 'buy a car', checked: false },
             { id: 2, text: 'eat lunch', checked: true },
             { id: 3, text: 'go to sleep', checked: false }
-        ]
+        ],
+        users:[]
     },
     mutations : { // 데이터를 실질적으로 변경 가능함
+        SET_USERS(state, users) {
+            state.users = users;
+        },
         ADD_TODO(state, value) {
             state.todos.push(
                 {
@@ -37,7 +42,12 @@ export default new Vuex.Store({
     actions: { // 비동기 작업 처리
         // 데이터베이스에 새로운 todo를 저장해 달라고 요청 가능
         // 일단은 데이터 베이스 흉내를 내서 구현하자
-
+        getUsers({commit}) {
+            axios.get('https://jsonplaceholder.typicode.com/users')
+                .then(res => {
+                    commit('SET_USERS', res.data);
+            });
+        },
         addTodo({commit}, value){ // context: object, payload: data
             // 여기에 비동기 작업 들어감.
             // 일단 setTimeout 사용
