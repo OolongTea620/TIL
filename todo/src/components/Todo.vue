@@ -30,14 +30,25 @@ export default {
     methods: {
         toggleCheckbox(e) {
             // id 와 checked 여부를 부모 컴포넌트로 넘겨줌
-            this.$emit('toggle-checkbox', {
+            // this.$emit('toggle-checkbox', {
+            //     id: this.todo.id,
+            //     checked: e.target.checked
+            // }) 
+
+            // this.$store.commit('TOGGLE_TODO', {
+            //     id: this.todo.id, 
+            //     checked: e.target.checked
+            // })
+            this.$store.dispatch('toggleTodo', {
                 id: this.todo.id,
                 checked: e.target.checked
-            }) 
+            })
 
         },
         clickDelete(e) {
-            this.$emit('click-delete', this.todo.id);
+            // this.$emit('click-delete', this.todo.id);
+            // this.$store.commit('DELETE_TODO', this.todo.id);
+            this.$store.dispatch('deleteTodo', this.todo.id)
         }
     }
 
