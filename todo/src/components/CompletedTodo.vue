@@ -10,11 +10,10 @@ export default {
       // todos() {
       //   // state를 가져올 때는 computed안에 작성하기
       //   return this.$store.state.todos;
-        
       // },
       numberOfCompletedTodo() {
         //계산된 값을 가져오게 하는 역할을 한다. 
-        return this.$store.getters.numberOfCompletedTodo;
+        return this.$store.getters['todo/numberOfCompletedTodo'];
       }
     }
 }

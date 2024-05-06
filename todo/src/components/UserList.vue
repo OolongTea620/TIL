@@ -1,7 +1,7 @@
 <template>
     <div>
         UserList
-        <div v-for="user in people" :key="user.id">
+        <div v-for="user in users" :key="user.id">
             {{ user.name }}
         </div>
     </div>  
@@ -25,13 +25,15 @@ export default {
         //     'users'
         // ])
         // 'people'로 alias 주기
-        ...mapState({people: 'users'})
+        ...mapState({
+            users: state => state.users
+        })
     },
     methods: {
         // getUsers() {
         //     this.$store.dispatch('getUsers');
         // }
-        ...mapActions(['getUsers'])
+        ...mapActions('user',['getUsers'])
     }
 }
 </script>

@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         numberOfCompletedTodo() {
-            return this.$store.getters.numberOfCompletedTodo;
+            return this.$store.getters['todo/numberOfCompletedTodo'];
         }
     },
     methods: {
@@ -45,7 +45,7 @@ export default {
             //     id: this.todo.id, 
             //     checked: e.target.checked
             // })
-            this.$store.dispatch('toggleTodo', {
+            this.$store.dispatch('todo/toggleTodo', {
                 id: this.todo.id,
                 checked: e.target.checked
             })
@@ -54,7 +54,7 @@ export default {
         clickDelete(e) {
             // this.$emit('click-delete', this.todo.id);
             // this.$store.commit('DELETE_TODO', this.todo.id);
-            this.$store.dispatch('deleteTodo', this.todo.id)
+            this.$store.dispatch('todo/deleteTodo', this.todo.id)
         }
     }
 
