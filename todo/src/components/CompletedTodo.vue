@@ -7,13 +7,14 @@
 <script>
 export default {
     computed: {
-      todos() {
-        // state를 가져올 때는 computed안에 작성하기
-        return this.$store.state.todos;
+      // todos() {
+      //   // state를 가져올 때는 computed안에 작성하기
+      //   return this.$store.state.todos;
         
-      },
+      // },
       numberOfCompletedTodo() {
-          return this.todos.filter(todo => todo.checked).length;
+        //계산된 값을 가져오게 하는 역할을 한다. 
+        return this.$store.getters.numberOfCompletedTodo;
       }
     }
 }

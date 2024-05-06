@@ -67,7 +67,12 @@ export default new Vuex.Store({
             }, 500);
         }
     },
-    getters: { // vue computed와 비슷함
+    getters: { 
+        // vue computed와 비슷함
+        // 계산된 값을 다른 컴포턴트에서 비슷하게 사용할 수 있음
+        numberOfCompletedTodo: state => {
+            return state.todos.filter(todo => todo.checked).length; 
+        }
 
     }
 });
