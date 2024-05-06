@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 이벤트</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- vue v-for -->
+        <div v-for="person in people">
+            {{person.name}} {{person.age}}
+        </div>
+
+        <hr>
+        <!-- of 도 가능 -->
+        <div v-for="person in people">
+            {{person.name}} {{person.age}}
+        </div>
+
+        <hr>
+        <!-- index를 가져오는 방법 -->
+        <!--:key에는 유니크 속성 부여 -->
+        <div v-for="(person, index) in people" :key="person.name"> 
+            {{person.name}} {{person.age}} {{index}}
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                people: [
+                    {name : 'a', age : 20},
+                    {name : 'b', age : 21},
+                    {name : 'c', age : 22},
+                    {name : 'd', age : 23}
+                ]
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+</html>
